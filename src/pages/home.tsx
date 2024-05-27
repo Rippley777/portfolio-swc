@@ -1,11 +1,12 @@
 import React from "react";
-import ProjectDisplay from "./projectDisplay";
+import Page from "../components/layout/page";
+import Timeline from "./timeline";
 
 const Home: React.FC = () => {
   return (
-    <div className="h-full w-full">
-      <ProjectDisplay projects={[]} />
-    </div>
+    <Page>
+      <Timeline />
+    </Page>
   );
 };
 
