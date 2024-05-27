@@ -10,7 +10,7 @@ const generateDivs = (configs) => {
 };
 
 const DivContainer: React.FC = () => {
-  const numDivs = 6;
+  const numDivs = 1;
   const divConfigurations = generateRandomDivConfigs(numDivs);
 
   return <div className="flex flex-col">{generateDivs(divConfigurations)}</div>;
@@ -28,40 +28,40 @@ const Display: React.FC = () => {
     } else if (scrollPositionX < 1100) {
       setDisplayText(null);
     } else if (scrollPositionX < 1900) {
-      setDisplayText("2022 2024");
+      setDisplayText("2022-2024");
       //   setViewItem(1);
     } else if (scrollPositionX < 2100) {
       setDisplayText(null);
     } else if (scrollPositionX < 2900) {
-      setDisplayText("2019 2022");
+      setDisplayText("2019-2022");
     } else if (scrollPositionX < 3100) {
       setDisplayText(null);
     } else if (scrollPositionX < 3900) {
-      setDisplayText("2017 2019");
+      setDisplayText("2017-2019");
     } else if (scrollPositionX < 4200) {
       setDisplayText(null);
     } else if (scrollPositionX < 5000) {
-      setDisplayText("2016 2017");
+      setDisplayText("2016-2017");
     } else if (scrollPositionX < 5200) {
       setDisplayText(null);
     } else if (scrollPositionX < 6000) {
-      setDisplayText("2015 2016");
+      setDisplayText("2015-2016");
     } else if (scrollPositionX < 6200) {
       setDisplayText(null);
     } else if (scrollPositionX < 7000) {
-      setDisplayText("2014 2015");
+      setDisplayText("2014-2015");
     } else if (scrollPositionX < 7200) {
       setDisplayText(null);
     } else if (scrollPositionX < 8000) {
-      setDisplayText("2013 2014");
+      setDisplayText("2013-2014");
     } else if (scrollPositionX < 8200) {
       setDisplayText(null);
     } else if (scrollPositionX < 9000) {
-      setDisplayText("2012 2013");
+      setDisplayText("2012-2013");
     } else if (scrollPositionX < 9200) {
       setDisplayText(null);
     } else if (scrollPositionX < 10000) {
-      setDisplayText("2008 2012");
+      setDisplayText("2008-2008");
     }
   }, [scrollPositionX]);
   return (
@@ -71,17 +71,22 @@ const Display: React.FC = () => {
         <div className="h-40 overflow-hidden fixed top-[30vh] right-[16vw]">
           <div
             style={{
-              opacity: scrollPositionX % 30 > 18 ? 1 : 0,
+              opacity: scrollPositionX % 30 > 18 ? 0.5 : 0,
             }}
             className=" text-lime-600 font-bold font-mono text-center opacity-70"
           >
             <DivContainer />
           </div>
         </div>
-      ) : null}
-      <div className="text-6xl fixed top-[35vh] right-[20vw] w-20 text-lime-600 font-bold font-mono text-center animate-glitch1">
-        {displayText}
-      </div>
+      ) : (
+        <div className="flex text-2xl fixed top-[55vh] right-[20vw] text-lime-600 font-bold font-mono text-center ">
+          <div>{`$> `}</div>
+          <div className="px-3">
+            {displayText}
+            <span className="terminal-cursor"> </span>
+          </div>
+        </div>
+      )}
       {/* <div className="text-6xl fixed top-[35vh] right-[20vw] w-20 text-cyan-600 font-bold font-mono text-center animate-glitch2">
         {displayText}
       </div>
