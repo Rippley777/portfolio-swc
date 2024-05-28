@@ -10,10 +10,8 @@ const getRandomClassName = () => {
   const animations = ["", "", "animate-flicker", "", "", "animate-flicker2"];
   const colors = [
     "bg-lime-500",
-    // "bg-lime-800",
     "bg-black",
     "bg-white",
-    // "bg-green-500",
     "bg-lime-500",
     "bg-lime-500",
   ];
@@ -30,7 +28,9 @@ const getRandomClassName = () => {
   return `${color} ${height} ${width} ${margin} ${marginLeft} ${animation} ${opacity}`;
 };
 
-export const generateRandomDivConfigs = (numDivs: number) => {
+export const generateRandomDivConfigs = (
+  numDivs: number
+): { className: string }[] => {
   const configs = [];
   for (let i = 0; i < numDivs; i++) {
     configs.push({ className: getRandomClassName() });

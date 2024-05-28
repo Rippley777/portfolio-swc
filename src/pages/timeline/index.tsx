@@ -1,65 +1,43 @@
 import React from "react";
-import { GoDotFill } from "react-icons/go";
 import { useAppContext } from "../../AppContext";
-// import Retro9000 from "../../components/retro9000";
-import useInView from "../../hooks/useInView";
-import TimelineItems from "./timelineItem";
-import Display from "./display";
+import TimelineItems from "./components/timelineItem";
+import Display from "./components/display";
 import ActiveYear from "./components/activeYear";
-interface TimelineProps {
-  // Define the props for your component here
-}
+import IconBackdrop from "./components/iconBackdrop";
+import TimelineDot from "./components/timelineDot";
 
-const Timeline: React.FC<TimelineProps> = () => {
-  // Implement your component logic here
-  const { scrollPositionX, setScrollPositionX } = useAppContext();
-  const [windowSize, setWindowSize] = React.useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+const Timeline: React.FC = () => {
+  const { setScrollPositionX } = useAppContext();
 
   React.useEffect(() => {
-    const handleScroll = (event: unknown) => {
-      console.log({ event });
+    const handleScroll = () => {
       setScrollPositionX(window.scrollY);
     };
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-    window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [setScrollPositionX]);
 
   return (
-    <div className="grid grid-cols-10 gap-4 h-full">
-      <div className="col-span-1 flex flex-col h-[14000px]">
-        <ActiveYear />
-        <span
-          style={{
-            top: `${scrollPositionX + windowSize.height / 2}px`,
-          }}
-          className="absolute left-[69px]"
-        >
-          <GoDotFill size={24} />
-        </span>
+    <div aria-label="Timeline-style portfolio site for Ally Rippley">
+      <IconBackdrop />
+      <div className="grid grid-cols-12 gap-4 h-full">
+        <div className="col-span-3 md:col-span-2 xl:col-span-1 flex flex-col h-[14000px]">
+          <ActiveYear />
+          <TimelineDot />
 
-        <div className="w-[2px] bg-gradient-to-b from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 via-purple h-full mx-20"></div>
-      </div>
-      <div className="col-span-7 md:col-span-5">
-        <div className="fixed w-1/2">
-          <TimelineItems />
+          <div className="w-[2px] bg-gradient-to-b from-lime-500 via-cyan-500  to-purple-500 via-purple h-full mx-3 sm:mx-36"></div>
         </div>
-      </div>
-      <div className="col-span-2 md:col-span-4 fixed right-0 top-[10vh] mr-20">
-        <Display />
+        <div className="col-span-8 xl:col-span-8">
+          <div className="fixed xl:w-3/4 h-full">
+            <TimelineItems />
+          </div>
+        </div>
+        <div className="col-span-1 xl:col-span-3 fixed right-8 xl:right-[-100px] top-[10vh]">
+          <Display />
+        </div>
       </div>
     </div>
   );

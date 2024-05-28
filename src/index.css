@@ -66,6 +66,11 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.timeline-item ul {
+  list-style-type: disc;
+  padding: 0;
+}
+
 .font-mono {
   font-family: "Cutive Mono", monospace;
 }
@@ -149,7 +154,7 @@ button:focus-visible {
     border-color: transparent;
   }
   50% {
-    border-color: green;
+    border-color: #65a30d;
   }
 }
 
@@ -159,6 +164,6 @@ button:focus-visible {
     border-color: transparent;
   }
   50% {
-    border-color: green;
+    border-color: #65a30d;
   }
 }

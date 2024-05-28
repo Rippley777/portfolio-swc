@@ -1,10 +1,17 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
+import { years } from "./mock-data/app";
 
 type AppContextType = {
+  activeYear: number;
+  updateActiveYear: React.Dispatch<number>;
   scrollPositionX: number;
   setScrollPositionX: React.Dispatch<React.SetStateAction<number>>;
-
-  // Add other states and functions as needed
 };
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -12,15 +19,37 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  // const [face, setFace] = useState(0);
+  const [activeYear, setActiveYear] = useState(0);
   const [scrollPositionX, setScrollPositionX] = useState(0);
-  // console.log("Face:", face);
-  console.log("Scroll position X:", scrollPositionX);
 
-  // Add other states and functions as needed
+  const updateActiveYear = (year: number) => {
+    const selectedYear = years.find((y) => y.year === year);
+    // const startPosition = years.find((y) => y.year === year)?.startPosition;
+    if (selectedYear) {
+      setScrollPositionX(selectedYear.startPosition + 50);
+    }
+  };
+
+  useEffect(() => {
+    const current = years.find(
+      (year) =>
+        scrollPositionX > year.startPosition &&
+        scrollPositionX < year.endPosition
+    )?.year;
+    if (current !== activeYear) {
+      setActiveYear(current ?? 0);
+    }
+  }, [scrollPositionX, activeYear]);
 
   return (
-    <AppContext.Provider value={{ scrollPositionX, setScrollPositionX }}>
+    <AppContext.Provider
+      value={{
+        activeYear,
+        updateActiveYear,
+        scrollPositionX,
+        setScrollPositionX,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

@@ -1,35 +1,39 @@
 import React from "react";
+import { SiGithub, SiLinkedin } from "react-icons/si";
+import { useAppContext } from "../../../AppContext";
 
-interface HeaderProps {
-  title?: string;
-}
-
-const Header: React.FC<HeaderProps> = ({ title = "Main Navigation" }) => {
+const Header: React.FC = () => {
+  const { scrollPositionX } = useAppContext();
   return (
-    <header
-      className="fixed top-0 right-0 flex h-14 px-6 w-full items-center justify-between"
-      aria-label={title}
-    >
-      <div>test</div>
-      <nav aria-label={title} className="">
+    <header className="fixed top-0 right-0 z-10 flex h-14 px-6 w-full items-center justify-between">
+      <div>
+        {scrollPositionX > 350 && (
+          <div className="text-5xl font-bold sm:px-4 animate-fadeInSlow">
+            AR
+          </div>
+        )}
+      </div>
+      <nav aria-label={"External Profile Links"} className="">
         <ul className="flex gap-6 font-medium text-white">
           <li>
             <a
-              href="/"
-              className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+              href="https://github.com/Rippley777"
+              className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
             >
-              Home
+              <SiGithub className="inline mx-2" />
+              Github
             </a>
           </li>
           <li>
             <a
-              href="/case-studies"
-              className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+              href="https://www.linkedin.com/in/allyrippley/"
+              className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
             >
-              Case Studies
+              <SiLinkedin className="inline mx-2" />
+              LinkedIn
             </a>
           </li>
-          <li>
+          {/* <li>
             <a
               href="/history"
               className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -44,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ title = "Main Navigation" }) => {
             >
               Future
             </a>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>

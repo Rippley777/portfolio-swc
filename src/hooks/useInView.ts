@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const useInView = (ref, options = {}) => {
   const [isIntersecting, setIsIntersecting] = useState(false);
-  console.log({ isIntersecting });
+  // console.log({ isIntersecting });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIsIntersecting(entry.isIntersecting),
-      options,
+      options
     );
 
     if (ref.current) {

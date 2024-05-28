@@ -8,13 +8,49 @@ export default {
         fadeIn: "fadeIn 1s ease-in-out",
         fadeInSlow: "fadeIn 2s ease-in-out",
         fadeInSlower: "fadeIn 5s ease-in-out",
+        fadeInSlowDelay5: "fadeInDelay 5s ease-in-out",
         glitch1: "glitch1 10s infinite",
         glitch2: "glitch2 10s infinite",
         glitch3: "glitch3 10s infinite",
         flicker: "flicker 1s infinite",
         flicker2: "flicker 2s infinite",
+        cascadeBottom: "cascadeBottom 60s infinite",
+        cascadeBottomRight: "cascadeBottomRight 60s infinite",
+        cascadeBottomLeft: "cascadeBottomLeft 60s infinite",
+        cascadeTop: "cascadeTop 60s infinite",
+        cascadeTopRight: "cascadeTopRight 60s infinite",
+        cascadeTopLeft: "cascadeTopLeft 60s infinite",
+        slideDownLeft: "slideDownLeft 5s forwards",
       },
       keyframes: {
+        slideDownLeft: {
+          "0%": { transform: "translate(0, 0)" },
+          "100%": { transform: "translate(20%, 8vh)" },
+        },
+        cascadeBottom: {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(1000px)" },
+        },
+        cascadeBottomRight: {
+          "0%": { transform: "translate(0, 0)" },
+          "100%": { transform: "translate(1000px, 1000px)" },
+        },
+        cascadeBottomLeft: {
+          "0%": { transform: "translate(0, 0)" },
+          "100%": { transform: "translate(-1000px, 1000px)" },
+        },
+        cascadeTop: {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-1000px)" },
+        },
+        cascadeTopRight: {
+          "0%": { transform: "translate(0, 0)" },
+          "100%": { transform: "translate(1000px, -1000px)" },
+        },
+        cascadeTopLeft: {
+          "0%": { transform: "translate(0, 0)" },
+          "100%": { transform: "translate(-1000px, -1000px)" },
+        },
         flicker: {
           "0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%": {
             opacity: 1,
@@ -30,6 +66,11 @@ export default {
         },
         fadeIn: {
           "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+        fadeInDelay: {
+          "0%": { opacity: 0 },
+          "50%": { opacity: 0 },
           "100%": { opacity: 1 },
         },
         glitch1: {
