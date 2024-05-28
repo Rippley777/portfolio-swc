@@ -24,7 +24,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
 
   const updateActiveYear = (year: number) => {
     const selectedYear = years.find((y) => y.year === year);
-    // const startPosition = years.find((y) => y.year === year)?.startPosition;
     if (selectedYear) {
       setScrollPositionX(selectedYear.startPosition + 50);
     }
