@@ -17,5 +17,5 @@ export default defineConfig({
       },
     },
   },
-  assetsInclude: ["**/*.gltf", "**/*.glb", "**/*.stl", "**/*.env"],
+  assetsInclude: ["**/*.gltf", "**/*.glb", "**/*.stl", "**/*.env, **/*.ico"],
 });
