@@ -60,7 +60,7 @@ const Display: React.FC = () => {
     }
   }, [activeYear]);
   return (
-    <div className="hidden md:block w-40 xl:w-1/2 xl:mr-20">
+    <div className="hidden md:block w-48 xl:w-1/2 xl:mr-20">
       <img src={retro9000} alt="Retro computer display" />
       {displayText === null ? (
         <div className="h-40 overflow-hidden fixed top-[30vh] right-[16vw]">
@@ -75,12 +75,12 @@ const Display: React.FC = () => {
         </div>
       ) : (
         <>
-          <div className="hidden xl:block h-32 overflow-hidden fixed top-[150px] right-[275px] w-48">
+          <div className="hidden xl:block h-32 overflow-hidden fixed top-[155px] right-[270px] w-48">
             <pre
               style={{ marginTop: -(scrollPositionX / 10) }}
               className="text-[10px] text-lime-600"
             >
-              {` import React, { useEffect } from "react";
+              {`import React, { useEffect } from "react";
 import { useAppContext } from "../../../AppContext";
 
 const genUniqueKey = (length: number): string => {
@@ -241,7 +241,7 @@ export default IconBackdrop;
 `}
             </pre>
           </div>
-          <div className="flex text-sm fixed top-44 md:top-[140px] right-16 xl:top-[285px] xl:right-[340px] text-lime-600 font-bold font-mono text-center ">
+          <div className="flex text-sm fixed top-44 md:top-[180px] lg:top-[200px] right-[70px] xl:top-[285px] xl:right-[340px] text-lime-600 font-bold font-mono text-center ">
             <div>{`$> `}</div>
             <div className="px-3">
               {displayText}

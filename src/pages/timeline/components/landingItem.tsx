@@ -55,7 +55,7 @@ const LandingItem: React.FC = () => {
     <div className="h-full w-full absolute top-[5vh] sm:top-[10vh] sm:ml-28 lg:left-[10vw]">
       <img
         src={profilePic}
-        className="rounded-full w-60 my-10 ring-4 ring-gray-500 animate-fadeInSlow"
+        className="rounded-full w-60 my-10 ring-4 ring-gray-500 animate-fadeInSlow min-w-32"
       />
       <div className="relative h-16">
         <h2 className="fixed animate-glitch1 font-bold text-5xl">
